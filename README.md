@@ -19,7 +19,7 @@ In each block, participants moved the cursor from the center to a peripheral tar
 
 - MATLAB with the **Signal Processing Toolbox** and **Statistics and Machine Learning Toolbox**
 - For data collection (Windows only):
-  - **EMG**: Delsys differential surface electrodes (bipolar) on 7 arm muscles (FCR, ECRB, BB, TLat, TLH, DA, DP), acquired via TMSi Saga amplifier with the TMSi MATLAB SDK (`TMSiSDK_thunk_pcwin64.dll`) at 1024 Hz
+  - **EMG**: Delsys differential surface electrodes (bipolar) on 7 arm muscles, acquired via TMSi Saga amplifier with the TMSi MATLAB SDK (`TMSiSDK_thunk_pcwin64.dll`) at 1024 Hz
   - **Force**: ATI Mini45 6-axis force sensor (calibration SI-145-5, sensitivity 1/16 N), attached via wrist brace, acquired at 2048 Hz via NI USB-6361 DAQ
 
 ---
