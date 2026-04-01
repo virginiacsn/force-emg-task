@@ -1,25 +1,26 @@
-## force-emg-task
+### force-emg-task
 
 Code for the study: **[Comparing Upper Limb Intermuscular Coherence between Force- and Myoelectric-Control Tasks](https://repository.tudelft.nl/record/uuid:f614c737-56e7-48e1-9ad6-739a68ab933e)**
 
 ---
 
-### Overview
+#### Overview
 
-This study investigates how task requirements affect coordination between arm muscles. Participants performed a **center-out-hold (COH)** cursor task under two conditions:
+This repository contains code for **running the experiment** (real-time data collection and task control) and for **offline analysis** (signal processing, coherence computation, and figure generation). The study investigates how task requirements affect coordination between arm muscles. Participants performed a **center-out-hold (COH)** cursor task under two conditions:
 
 - **Force-control**: 2D forces applied to a handle drive cursor movement.
 - **EMG-control**: Surface EMG signals from pairs of muscles drive cursor movement.
 
-In each block, participants moved the cursor from the center to a peripheral target (arranged in a circle) and held it within the target. The main outcome measure is **intermuscular coherence**, an index of shared neural input to pairs of muscles, computed from rectified EMG signals during the hold phase, analyzed in the frequency domain (alpha: 8–12 Hz, beta: 15–30 Hz, gamma: 30–80 Hz).
+In each block, participants moved the cursor from the center to a peripheral target (arranged in a circle) and held it within the target. The main outcome measure is **intermuscular coherence**, an index of shared neural input to pairs of muscles, computed from rectified EMG signals during the hold phase, analyzed in the frequency domain (alpha: 8-12 Hz, beta: 15-30 Hz, gamma: 30-80 Hz).
 
 ---
 
 ### Requirements
 
 - MATLAB with the **Signal Processing Toolbox** and **Statistics and Machine Learning Toolbox**
-- For data collection: **TMSi Saga** EMG amplifier (Windows only; requires `TMSiSDK_thunk_pcwin64.dll`)
-- Force transducer sampled via DAQ at 2048 Hz; EMG sampled at 1024 Hz
+- For data collection (Windows only):
+  - **EMG**: Delsys differential surface electrodes (bipolar) on 7 arm muscles (FCR, ECRB, BB, TLat, TLH, DA, DP), acquired via TMSi Saga amplifier with the TMSi MATLAB SDK (`TMSiSDK_thunk_pcwin64.dll`) at 1024 Hz
+  - **Force**: ATI Mini45 6-axis force sensor (calibration SI-145-5, sensitivity 1/16 N), attached via wrist brace, acquired at 2048 Hz via NI USB-6361 DAQ
 
 ---
 
@@ -93,7 +94,7 @@ analysis_all_subjects     % aggregate across subjects
 
 **Force** (`procForce`):
 
-1. Low-pass filter (2–5 Hz, 2nd-order Butterworth)
+1. Low-pass filter (2-5 Hz, 2nd-order Butterworth)
 2. Decomposition into magnitude and directional components
 3. Downsampling to match EMG sample rate
 
