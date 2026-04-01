@@ -5,19 +5,26 @@ clear all;
 addpath(genpath('Tools'));
 
 % Parameters
+if strcmp(computer, 'PCWIN64')
+    rootpath = 'D:\Student_experiments\Virginia\Data\Exp\';
+elseif strcmp(computer, 'MACI64')
+    rootpath = '/Users/virginia/Documents/MATLAB/Thesis/Data/';
+end
+
 fileparams = struct(...
     'saveforce',    1,...
     'saveEMG',      1,...
     'date',         '20181109',...
-    'subject',      '13');
+    'subject',      '13',...
+    'rootpath',     rootpath);
 
-if ~exist(['D:\Student_experiments\Virginia\Data\Exp\',fileparams.date],'dir') && (fileparams.saveEMG || fileparams.saveforce)
-    mkdir(['D:\Student_experiments\Virginia\Data\Exp\',fileparams.date])
+if ~exist([fileparams.rootpath,fileparams.date],'dir') && (fileparams.saveEMG || fileparams.saveforce)
+    mkdir([fileparams.rootpath,fileparams.date])
 end
-if ~exist(['D:\Student_experiments\Virginia\Data\Exp\',fileparams.date,'\s',fileparams.subject],'dir') && (fileparams.saveEMG || fileparams.saveforce)
-    mkdir(['D:\Student_experiments\Virginia\Data\Exp\',fileparams.date,'\s',fileparams.subject])
+if ~exist([fileparams.rootpath,fileparams.date,'\s',fileparams.subject],'dir') && (fileparams.saveEMG || fileparams.saveforce)
+    mkdir([fileparams.rootpath,fileparams.date,'\s',fileparams.subject])
 end
-fileparams.filepath =       ['D:\Student_experiments\Virginia\Data\Exp\',fileparams.date,'\s',fileparams.subject,'\'];
+fileparams.filepath = [fileparams.rootpath,fileparams.date,'\s',fileparams.subject,'\'];
 
 if ~exist([fileparams.filepath,'Parameters/'],'dir')
     mkdir([fileparams.filepath,'Parameters/'])
